@@ -4,7 +4,7 @@ import {
   HttpHandler,
 } from '@angular/common/http';
 
-const baseUrl = 'https://api.openweathermap.org/data/2.5/weather?';
+const baseUrl = 'https://api.openweathermap.org/data/2.5/weather';
 
 export class HttpInterceptorService implements HttpInterceptor {
   intercept(request: HttpRequest<any>, next: HttpHandler) {

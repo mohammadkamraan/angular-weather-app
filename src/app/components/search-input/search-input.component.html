@@ -1,0 +1,11 @@
+<form #searchForm="ngForm" class="cityForm" (ngSubmit)="onSubmit()">
+  <input
+    type="text"
+    placeholder="Enter the cityName"
+    required
+    ngModel
+    name="cityName"
+  />
+  <button type="submit" [disabled]="!searchForm.value.cityName">click</button>
+  <button type="click" [disabled]="!searchForm.value.cityName">ADD</button>
+</form>

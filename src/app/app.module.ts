@@ -5,10 +5,13 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HttpInterceptorService } from './services/httpIntercepter.service';
+import { SearchInputComponent } from './components/search-input/search-input.component';
+
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AppComponent],
-  imports: [BrowserModule, HttpClientModule],
+  declarations: [AppComponent, SearchInputComponent],
+  imports: [BrowserModule, HttpClientModule, FormsModule],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

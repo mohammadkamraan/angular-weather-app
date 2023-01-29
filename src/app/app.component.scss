@@ -1,0 +1,18 @@
+.app_background {
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  background-image: url("../images/weater.jpeg");
+  &.rainy {
+    background-image: url("../images/rain.png");
+  }
+  &.cloudy {
+    background-image: url("../images/cloudy.jpeg");
+  }
+  &.plluted {
+    background-image: url("../images/plluted.jpeg");
+  }
+  &.sunny {
+    background-image: url("../images/sunny.jpeg");
+  }
+}

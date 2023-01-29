@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { HttpRequestsService } from './services/http/http-requests.service.ts.service';
 
 interface WeatherName {
@@ -46,16 +47,21 @@ export interface CityWeatherData {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnDestroy {
   cityWeater: CityWeatherData;
+
+  requestSubscriptions: Subscription;
 
   constructor(public requestsService: HttpRequestsService) {}
 
   onFormSubmit(cityName: string) {
-    console.log('workd');
     this.requestsService.getCityWeather(cityName).subscribe((data) => {
       this.cityWeater = { ...data, weather: data.weather[0] };
       console.log(this.cityWeater);
     });
+  }
+
+  ngOnDestroy(): void {
+    this.requestSubscriptions.unsubscribe();
   }
 }

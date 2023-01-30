@@ -9,8 +9,9 @@
     <app-grid-system>
       <app-added-city
         class="city-card"
-        *ngFor="let city of cities"
+        *ngFor="let city of cities; let cityIndex = index"
         [cityname]="city"
+        [cityIndex]="cityIndex"
       ></app-added-city>
     </app-grid-system>
   </div>

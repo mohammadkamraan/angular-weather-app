@@ -70,6 +70,14 @@ export class AppComponent implements OnDestroy, OnInit {
     localStorage.setItem('cities', JSON.stringify(this.cities));
   }
 
+  deleteCity(cityIndex: number) {
+    const modifiedCities = this.cities.filter((city: string, index: number) => {
+      return cityIndex !== index;
+    });
+    this.cities = modifiedCities;
+    console.log(this.cities);
+  }
+
   ngOnInit(): void {
     const citiesArray = JSON.parse(localStorage.getItem('cities') as string);
     if (citiesArray?.length) {

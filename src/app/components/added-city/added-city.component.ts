@@ -1,4 +1,11 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { Subscription } from 'rxjs';
 import { HttpRequestsService } from 'src/app/services/http/http-requests.service.ts.service';
 
@@ -12,11 +19,17 @@ import { CityWeatherData } from '../../app.component';
 export class AddedCityComponent implements OnInit, OnDestroy {
   @Input() cityname: string;
 
+  @Input() cityIndex: number;
+
+  @Output() deleteCity = new EventEmitter<number>();
+
   loading: boolean = false;
 
   cityWeather: CityWeatherData;
 
   requestSubscription: Subscription;
+
+  showOptions: boolean = false;
 
   constructor(private httpRequest: HttpRequestsService) {}
 
@@ -30,9 +43,14 @@ export class AddedCityComponent implements OnInit, OnDestroy {
       });
   }
 
+  onDelete() {
+    this.deleteCity.emit(this.cityIndex);
+  }
+
   ngOnInit(): void {
     this.onClick();
   }
+
   ngOnDestroy(): void {
     this.requestSubscription.unsubscribe();
   }

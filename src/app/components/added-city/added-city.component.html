@@ -1,5 +1,9 @@
-<div *ngIf="cityWeather && !loading">
-  {{ cityWeather.weather.main }}
+<div class="card-background" *ngIf="cityWeather && !loading">
+  <h4 class="city-name">{{ cityWeather.name }}</h4>
+  <div class="main-weather">
+    <p>{{ cityWeather.weather.main }}</p>
+    <p>{{ cityWeather.main.temp }} F</p>
+  </div>
 </div>
 <div class="spiner-wrapper">
   <app-spiner-loading *ngIf="!cityWeather && loading"></app-spiner-loading>

@@ -1,3 +1,9 @@
 <div class="app_background">
-  <app-search-input (onFormSubmit)="onFormSubmit($event)"></app-search-input>
+  <h1 class="app-header">Angular Weather App</h1>
+  <app-search-input
+    (onFormSubmit)="onFormSubmit($event)"
+    (onAddCity)="onAddCity($event)"
+  >
+  </app-search-input>
+  <app-added-city *ngFor="let city of cities" cityname="city"></app-added-city>
 </div>

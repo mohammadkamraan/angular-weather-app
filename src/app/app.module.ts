@@ -8,9 +8,11 @@ import { HttpInterceptorService } from './services/httpIntercepter.service';
 import { SearchInputComponent } from './components/search-input/search-input.component';
 
 import { FormsModule } from '@angular/forms';
+import { AddedCityComponent } from './components/added-city/added-city.component';
+import { GridSystemComponent } from './components/grid-system/grid-system.component';
 
 @NgModule({
-  declarations: [AppComponent, SearchInputComponent],
+  declarations: [AppComponent, SearchInputComponent, AddedCityComponent, GridSystemComponent],
   imports: [BrowserModule, HttpClientModule, FormsModule],
   providers: [
     {

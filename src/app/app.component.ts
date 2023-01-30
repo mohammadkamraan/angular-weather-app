@@ -49,16 +49,24 @@ export interface CityWeatherData {
 })
 export class AppComponent implements OnDestroy {
   cityWeater: CityWeatherData;
+  loading: boolean = false;
 
   requestSubscriptions: Subscription;
+
+  cities: string[] = [];
 
   constructor(public requestsService: HttpRequestsService) {}
 
   onFormSubmit(cityName: string) {
+    this.loading = true;
     this.requestsService.getCityWeather(cityName).subscribe((data) => {
       this.cityWeater = { ...data, weather: data.weather[0] };
-      console.log(this.cityWeater);
+      this.loading = false;
     });
+  }
+
+  onAddCity(cityName: string) {
+    this.cities.push(cityName);
   }
 
   ngOnDestroy(): void {

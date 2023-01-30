@@ -8,6 +8,7 @@ import { NgForm } from '@angular/forms';
 })
 export class SearchInputComponent {
   @Output() onFormSubmit = new EventEmitter<string>();
+  @Output() onAddCity = new EventEmitter<string>();
   @ViewChild('searchForm')
   searchForm: NgForm;
 
@@ -16,6 +17,6 @@ export class SearchInputComponent {
   }
 
   addCity() {
-    console.log(this.searchForm);
+    this.onAddCity.emit(this.searchForm.value.cityName);
   }
 }

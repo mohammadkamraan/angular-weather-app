@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { HttpRequestsService } from './services/http/http-requests.service.ts.service';
 
@@ -47,7 +47,7 @@ export interface CityWeatherData {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnDestroy {
+export class AppComponent implements OnDestroy, OnInit {
   cityWeater: CityWeatherData;
   loading: boolean = false;
 
@@ -67,7 +67,14 @@ export class AppComponent implements OnDestroy {
 
   onAddCity(cityName: string) {
     this.cities.push(cityName);
-    console.log(this.cities);
+    localStorage.setItem('cities', JSON.stringify(this.cities));
+  }
+
+  ngOnInit(): void {
+    const citiesArray = JSON.parse(localStorage.getItem('cities') as string);
+    if (citiesArray?.length) {
+      this.cities = citiesArray;
+    }
   }
 
   ngOnDestroy(): void {

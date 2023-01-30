@@ -27,7 +27,6 @@ export class AddedCityComponent implements OnInit, OnDestroy {
       .subscribe((data) => {
         this.cityWeather = { ...data, weather: data.weather[0] };
         this.loading = false;
-        console.log(data);
       });
   }
 

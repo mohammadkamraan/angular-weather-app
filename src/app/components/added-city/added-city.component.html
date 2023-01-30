@@ -1,5 +1,6 @@
 <div *ngIf="cityWeather && !loading">
   {{ cityWeather.weather.main }}
-  is it working?
 </div>
-<div class="loading-mode" *ngIf="!cityWeather && loading">loading...</div>
+<div class="spiner-wrapper">
+  <app-spiner-loading *ngIf="!cityWeather && loading"></app-spiner-loading>
+</div>

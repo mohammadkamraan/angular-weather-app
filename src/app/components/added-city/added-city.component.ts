@@ -25,7 +25,7 @@ export class AddedCityComponent implements OnInit, OnDestroy {
 
   loading: boolean = false;
 
-  cityWeather: CityWeatherData;
+  cityWeather: CityWeatherData | null;
 
   requestSubscription: Subscription;
 
@@ -34,7 +34,9 @@ export class AddedCityComponent implements OnInit, OnDestroy {
   constructor(private httpRequest: HttpRequestsService) {}
 
   onClick() {
+    this.cityWeather = null;
     this.loading = true;
+    this.showOptions = false;
     this.requestSubscription = this.httpRequest
       .getCityWeather(this.cityname)
       .subscribe((data) => {

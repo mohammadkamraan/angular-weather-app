@@ -12,6 +12,7 @@
         *ngFor="let city of cities; let cityIndex = index"
         [cityname]="city"
         [cityIndex]="cityIndex"
+        (deleteCity)="deleteCity($event)"
       ></app-added-city>
     </app-grid-system>
   </div>

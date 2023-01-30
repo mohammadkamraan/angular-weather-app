@@ -21,6 +21,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   color: azure;
+  position: relative;
 }
 
 .main-weather {
@@ -37,6 +38,40 @@
   width: 1.5rem;
   height: 1.5rem;
   padding: 0.5rem 0 0.5rem 0;
+}
+
+.options-box {
+  opacity: 0;
+  transition: all 500ms;
+  visibility: hidden;
+  position: absolute;
+  top: 2rem;
+  left: 0.5rem;
+  width: 5rem;
+  height: 4rem;
+  background-color: white;
+  border-radius: 5px;
+  &.open {
+    opacity: 100;
+    visibility: visible;
+  }
+}
+
+.option {
+  background-color: transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  font-size: 0.8rem;
+  border: none;
+  svg {
+    width: 1rem;
+    height: 1rem;
+    &.delete-icons {
+      color: crimson;
+    }
+  }
 }
 
 @media screen and (max-width: 1280px) {

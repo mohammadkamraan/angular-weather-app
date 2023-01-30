@@ -75,7 +75,8 @@ export class AppComponent implements OnDestroy, OnInit {
       return cityIndex !== index;
     });
     this.cities = modifiedCities;
-    console.log(this.cities);
+    if (!this.cities.length) localStorage.removeItem('cities');
+    else localStorage.setItem('cities', JSON.stringify(this.cities));
   }
 
   ngOnInit(): void {

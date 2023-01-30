@@ -1,0 +1,68 @@
+@use "../../scss/variables.scss";
+
+.speaner-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.city-weather-card {
+  height: 12rem;
+  width: 32rem;
+  margin: 1rem auto 0 auto;
+  border-radius: 10px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  &.Clear {
+    background-image: url("../../../images/sunny.jpeg");
+  }
+  &.Rain {
+    background-image: url("../../../images/rain.png");
+  }
+  &.Snow {
+    background-image: url("../../../images/Snowy.jpeg");
+  }
+  &.Haze {
+    background-image: url("../../../images/plluted.jpeg");
+  }
+  &.Clouds {
+    background-image: url("../../../images/cloudy.jpeg");
+  }
+}
+
+.max-min {
+  padding: 0 4rem;
+  svg {
+    width: 1rem;
+    height: 1rem;
+    &.max-temp {
+      color: aquamarine;
+    }
+    &.min-temp {
+      color: crimson;
+    }
+  }
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  p {
+    margin: 0 0 1rem 0;
+    color: white;
+  }
+}
+
+.city-name {
+  padding: 1rem 0 0 0.5rem;
+  color: white;
+  margin: 0;
+}
+
+.main-data {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  p {
+    color: white;
+    font-size: 1.5rem;
+  }
+}

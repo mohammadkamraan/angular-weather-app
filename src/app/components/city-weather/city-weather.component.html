@@ -1,0 +1,57 @@
+<div
+  *ngIf="!loading && cityWeather"
+  role="card"
+  class="city-weather-card"
+  [ngClass]="cityWeather.weather.main"
+>
+  <h2 class="city-name">{{ cityWeather.name }}</h2>
+  <div class="main-data">
+    <p>{{ cityWeather.weather.main }}</p>
+    <p>{{ cityWeather.main.temp }}</p>
+  </div>
+  <div class="max-min">
+    <div>
+      <p>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="max-temp"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M19.5 5.25l-7.5 7.5-7.5-7.5m15 6l-7.5 7.5-7.5-7.5"
+          />
+        </svg>
+        {{ cityWeather.main.temp_min }} F
+      </p>
+      <p>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="min-temp"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M4.5 12.75l7.5-7.5 7.5 7.5m-15 6l7.5-7.5 7.5 7.5"
+          />
+        </svg>
+        {{ cityWeather.main.temp_min }} F
+      </p>
+    </div>
+    <div>
+      <p>wind speed :{{ cityWeather.wind.speed }}</p>
+      <p>wind degree :{{ cityWeather.wind.deg }}</p>
+    </div>
+  </div>
+</div>
+<div *ngIf="loading && !cityWeather" class="speaner-wrapper">
+  <app-spiner-loading></app-spiner-loading>
+</div>

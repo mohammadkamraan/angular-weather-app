@@ -48,7 +48,7 @@ export interface CityWeatherData {
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnDestroy, OnInit {
-  cityWeater: CityWeatherData;
+  cityWeater: CityWeatherData | null;
   loading: boolean = false;
 
   requestSubscriptions: Subscription;
@@ -58,6 +58,7 @@ export class AppComponent implements OnDestroy, OnInit {
   constructor(public requestsService: HttpRequestsService) {}
 
   onFormSubmit(cityName: string) {
+    this.cityWeater = null;
     this.loading = true;
     this.requestsService.getCityWeather(cityName).subscribe((data) => {
       this.cityWeater = { ...data, weather: data.weather[0] };

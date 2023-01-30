@@ -1,4 +1,9 @@
-<div class="card-background" *ngIf="cityWeather && !loading">
+<div
+  class="card-background"
+  [ngClass]="cityWeather.weather.main"
+  *ngIf="cityWeather && !loading"
+  (click)="onClick()"
+>
   <svg
     role="button"
     (click)="showOptions = !showOptions"
@@ -16,7 +21,7 @@
     />
   </svg>
   <div class="options-box" [ngClass]="showOptions ? ' open' : ''">
-    <button (click)="onClick()" class="option">
+    <button (click)="getWeather()" class="option">
       <p>refresh</p>
       <svg
         xmlns="http://www.w3.org/2000/svg"

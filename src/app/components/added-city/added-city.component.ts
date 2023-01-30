@@ -23,6 +23,8 @@ export class AddedCityComponent implements OnInit, OnDestroy {
 
   @Output() deleteCity = new EventEmitter<number>();
 
+  @Output() cardClick = new EventEmitter<string>();
+
   loading: boolean = false;
 
   cityWeather: CityWeatherData | null;
@@ -34,6 +36,10 @@ export class AddedCityComponent implements OnInit, OnDestroy {
   constructor(private httpRequest: HttpRequestsService) {}
 
   onClick() {
+    this.cardClick.emit(this.cityname);
+  }
+
+  getWeather() {
     this.cityWeather = null;
     this.loading = true;
     this.showOptions = false;
@@ -50,7 +56,7 @@ export class AddedCityComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.onClick();
+    this.getWeather();
   }
 
   ngOnDestroy(): void {

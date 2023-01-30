@@ -1,3 +1,4 @@
+@use "../../scss/variables.scss";
 .card-inner {
   border-radius: 10px;
 }
@@ -17,11 +18,26 @@
   width: 100%;
   height: 100%;
   border-radius: 10px;
-  background-image: url("../../../images/rain.png");
   background-repeat: no-repeat;
   background-size: cover;
   color: azure;
   position: relative;
+  &.Rain {
+    background-image: url("../../../images/rain.png");
+  }
+  &.Snow {
+    background-image: url("../../../images/Snowy.jpeg");
+    color: orangered;
+  }
+  &.Haze {
+    background-image: url("../../../images/plluted.jpeg");
+  }
+  &.Clear {
+    background-image: url("../../../images/sunny.jpeg");
+  }
+  &.Clouds {
+    background-image: url("../../../images/cloudy.jpeg");
+  }
 }
 
 .main-weather {

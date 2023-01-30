@@ -11,9 +11,10 @@ import { FormsModule } from '@angular/forms';
 import { AddedCityComponent } from './components/added-city/added-city.component';
 import { GridSystemComponent } from './components/grid-system/grid-system.component';
 import { SpinerLoadingComponent } from './components/spiner-loading/spiner-loading.component';
+import { CityWeatherComponent } from './components/city-weather/city-weather.component';
 
 @NgModule({
-  declarations: [AppComponent, SearchInputComponent, AddedCityComponent, GridSystemComponent, SpinerLoadingComponent],
+  declarations: [AppComponent, SearchInputComponent, AddedCityComponent, GridSystemComponent, SpinerLoadingComponent, CityWeatherComponent],
   imports: [BrowserModule, HttpClientModule, FormsModule],
   providers: [
     {

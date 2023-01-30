@@ -13,7 +13,12 @@
         [cityname]="city"
         [cityIndex]="cityIndex"
         (deleteCity)="deleteCity($event)"
+        (cardClick)="onFormSubmit($event)"
       ></app-added-city>
     </app-grid-system>
   </div>
+  <app-city-weather
+    [cityWeather]="cityWeater"
+    [loading]="loading"
+  ></app-city-weather>
 </div>

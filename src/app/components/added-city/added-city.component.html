@@ -1,4 +1,5 @@
-<div class="city-card" *ngIf="cityWeather && !loading">
+<div *ngIf="cityWeather && !loading">
   {{ cityWeather.weather.main }}
+  is it working?
 </div>
-<div *ngIf="!cityWeather && loading">loading...</div>
+<div class="loading-mode" *ngIf="!cityWeather && loading">loading...</div>

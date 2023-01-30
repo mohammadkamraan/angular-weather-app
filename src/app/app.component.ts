@@ -67,7 +67,7 @@ export class AppComponent implements OnDestroy {
 
   onAddCity(cityName: string) {
     this.cities.push(cityName);
-    console.log('happens', this.cities);
+    console.log(this.cities);
   }
 
   ngOnDestroy(): void {

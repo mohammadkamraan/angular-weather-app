@@ -5,9 +5,10 @@
     (onAddCity)="onAddCity($event)"
   >
   </app-search-input>
-  <div>
+  <div class="cities-card-wrapper">
     <app-grid-system>
       <app-added-city
+        class="city-card loading-mode"
         *ngFor="let city of cities"
         [cityname]="city"
       ></app-added-city>

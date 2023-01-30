@@ -1,1 +1,5 @@
-.grid-system{}
+.grid-system {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 16px;
+}

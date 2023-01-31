@@ -13,12 +13,11 @@ export class SearchInputComponent {
   searchForm: NgForm;
 
   onSubmit() {
-    console.log('is it happening?');
     this.onFormSubmit.emit(this.searchForm.value.cityName);
   }
 
   addCity() {
-    this.searchForm.reset();
     this.onAddCity.emit(this.searchForm.value.cityName);
+    this.searchForm.reset();
   }
 }

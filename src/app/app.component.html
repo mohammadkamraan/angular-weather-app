@@ -24,3 +24,25 @@
   ></app-city-weather>
   <app-alert [errorText]="errorText" (closeAlert)="clearError()"></app-alert>
 </div>
+<app-modal
+  (closeModalHandler)="closeModalesHandler()"
+  [showModal]="hasFourCitiesAlredy"
+>
+  <div
+    class="modal-content"
+    (click)="modalContentStopPropagationHandler($event)"
+  >
+    <p>you can not add more cities</p>
+  </div>
+</app-modal>
+<app-modal
+  (closeModalHandler)="closeModalesHandler()"
+  [showModal]="cityAlredyIsOnBookMark"
+>
+  <div
+    class="modal-content"
+    (click)="modalContentStopPropagationHandler($event)"
+  >
+    <p>the city alredy exists</p>
+  </div>
+</app-modal>

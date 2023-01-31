@@ -54,10 +54,14 @@ export class AppComponent implements OnDestroy, OnInit {
   requestSubscriptions: Subscription;
   cities: string[] = [];
   clearErrorTimer: any;
+  hasFourCitiesAlredy: boolean = false;
+  cityAlredyIsOnBookMark = false;
 
   constructor(public requestsService: HttpRequestsService) {}
 
   onFormSubmit(cityName: string) {
+    clearTimeout(this.clearErrorTimer);
+    this.errorText = '';
     this.cityWeater = null;
     this.loading = true;
     this.requestsService.getCityWeather(cityName).subscribe(
@@ -81,14 +85,23 @@ export class AppComponent implements OnDestroy, OnInit {
   }
 
   onAddCity(cityName: string) {
-    this.cities.push(cityName);
-    localStorage.setItem('cities', JSON.stringify(this.cities));
+    if (this.cities.length > 3) {
+      this.hasFourCitiesAlredy = true;
+    } else if (this.cities.includes(cityName)) {
+      this.cityAlredyIsOnBookMark = true;
+    } else {
+      this.cities.push(cityName);
+      localStorage.setItem('cities', JSON.stringify(this.cities));
+    }
   }
 
   deleteCity(cityIndex: number) {
     const modifiedCities = this.cities.filter((city: string, index: number) => {
       return cityIndex !== index;
     });
+    if (modifiedCities.length < 4) {
+      this.hasFourCitiesAlredy = false;
+    }
     this.cities = modifiedCities;
     if (!this.cities.length) localStorage.removeItem('cities');
     else localStorage.setItem('cities', JSON.stringify(this.cities));
@@ -97,6 +110,15 @@ export class AppComponent implements OnDestroy, OnInit {
   clearError() {
     clearTimeout(this.clearErrorTimer);
     this.errorText = '';
+  }
+
+  closeModalesHandler() {
+    this.cityAlredyIsOnBookMark = false;
+    this.hasFourCitiesAlredy = false;
+  }
+
+  modalContentStopPropagationHandler(event: Event) {
+    event.stopPropagation();
   }
 
   ngOnInit(): void {

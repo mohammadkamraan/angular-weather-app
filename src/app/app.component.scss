@@ -44,3 +44,17 @@
     height: 10rem;
   }
 }
+
+.modal-content {
+  background-color: white;
+  color: cornflowerblue;
+  width: 20rem;
+  height: 10rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  p {
+    font-size: 2rem;
+  }
+}

@@ -18,7 +18,7 @@ export class SearchInputComponent {
   }
 
   addCity() {
-    console.log('happens');
+    this.searchForm.reset();
     this.onAddCity.emit(this.searchForm.value.cityName);
   }
 }

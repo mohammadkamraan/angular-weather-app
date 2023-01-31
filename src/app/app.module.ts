@@ -13,9 +13,10 @@ import { GridSystemComponent } from './components/grid-system/grid-system.compon
 import { SpinerLoadingComponent } from './components/spiner-loading/spiner-loading.component';
 import { CityWeatherComponent } from './components/city-weather/city-weather.component';
 import { AlertComponent } from './components/alert/alert.component';
+import { ModalComponent } from './components/modal/modal.component';
 
 @NgModule({
-  declarations: [AppComponent, SearchInputComponent, AddedCityComponent, GridSystemComponent, SpinerLoadingComponent, CityWeatherComponent, AlertComponent],
+  declarations: [AppComponent, SearchInputComponent, AddedCityComponent, GridSystemComponent, SpinerLoadingComponent, CityWeatherComponent, AlertComponent, ModalComponent],
   imports: [BrowserModule, HttpClientModule, FormsModule],
   providers: [
     {

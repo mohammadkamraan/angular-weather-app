@@ -62,9 +62,9 @@
   transition: all 500ms;
   visibility: hidden;
   position: absolute;
-  top: 2rem;
-  left: 0.5rem;
-  width: 5rem;
+  top: 0rem;
+  left: 1rem;
+  width: 4rem;
   height: 4rem;
   background-color: white;
   border-radius: 5px;
@@ -101,5 +101,11 @@
       font-size: 1.5rem;
       margin: 2rem 0 0 0;
     }
+  }
+  .options-box {
+    top: 2rem;
+    left: 0.5rem;
+    width: 5rem;
+    height: 4rem;
   }
 }

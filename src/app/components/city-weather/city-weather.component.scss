@@ -66,3 +66,9 @@
     font-size: 1.5rem;
   }
 }
+
+@media screen and (max-width: 760px) {
+  .city-weather-card {
+    width: 20rem;
+  }
+}

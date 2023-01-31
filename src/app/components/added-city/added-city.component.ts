@@ -35,11 +35,17 @@ export class AddedCityComponent implements OnInit, OnDestroy {
 
   constructor(private httpRequest: HttpRequestsService) {}
 
+  optionToggle(event: Event) {
+    event.stopPropagation();
+    this.showOptions = !this.showOptions;
+  }
+
   onClick() {
     this.cardClick.emit(this.cityname);
   }
 
-  getWeather() {
+  getWeather(event?: Event) {
+    event?.stopPropagation();
     this.cityWeather = null;
     this.loading = true;
     this.showOptions = false;
@@ -51,7 +57,8 @@ export class AddedCityComponent implements OnInit, OnDestroy {
       });
   }
 
-  onDelete() {
+  onDelete(event?: Event) {
+    event?.stopPropagation();
     this.deleteCity.emit(this.cityIndex);
   }
 

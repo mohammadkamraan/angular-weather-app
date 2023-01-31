@@ -6,7 +6,7 @@
 >
   <svg
     role="button"
-    (click)="showOptions = !showOptions"
+    (click)="optionToggle($event)"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     viewBox="0 0 24 24"
@@ -21,7 +21,7 @@
     />
   </svg>
   <div class="options-box" [ngClass]="showOptions ? ' open' : ''">
-    <button (click)="getWeather()" class="option">
+    <button (click)="getWeather($event)" class="option">
       <p>refresh</p>
       <svg
         xmlns="http://www.w3.org/2000/svg"

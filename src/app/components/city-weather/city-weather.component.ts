@@ -10,4 +10,5 @@ import { CityWeatherData } from '../../app.component';
 export class CityWeatherComponent {
   @Input() cityWeather: CityWeatherData | null;
   @Input() loading: boolean;
+  @Input() error: string;
 }

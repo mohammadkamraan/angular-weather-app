@@ -50,20 +50,34 @@ export interface CityWeatherData {
 export class AppComponent implements OnDestroy, OnInit {
   cityWeater: CityWeatherData | null;
   loading: boolean = false;
-
+  errorText: string;
   requestSubscriptions: Subscription;
-
   cities: string[] = [];
+  clearErrorTimer: any;
 
   constructor(public requestsService: HttpRequestsService) {}
 
   onFormSubmit(cityName: string) {
     this.cityWeater = null;
     this.loading = true;
-    this.requestsService.getCityWeather(cityName).subscribe((data) => {
-      this.cityWeater = { ...data, weather: data.weather[0] };
-      this.loading = false;
-    });
+    this.requestsService.getCityWeather(cityName).subscribe(
+      (data) => {
+        this.cityWeater = { ...data, weather: data.weather[0] };
+        this.loading = false;
+      },
+      (error) => {
+        if (error.status === 404) {
+          this.errorText = 'the searched city not founded!';
+        } else {
+          this.errorText = 'something goes wrong:( please try again later';
+        }
+
+        this.loading = false;
+        this.clearErrorTimer = setTimeout(() => {
+          this.errorText = '';
+        }, 5000);
+      }
+    );
   }
 
   onAddCity(cityName: string) {
@@ -78,6 +92,11 @@ export class AppComponent implements OnDestroy, OnInit {
     this.cities = modifiedCities;
     if (!this.cities.length) localStorage.removeItem('cities');
     else localStorage.setItem('cities', JSON.stringify(this.cities));
+  }
+
+  clearError() {
+    clearTimeout(this.clearErrorTimer);
+    this.errorText = '';
   }
 
   ngOnInit(): void {

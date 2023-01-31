@@ -20,5 +20,7 @@
   <app-city-weather
     [cityWeather]="cityWeater"
     [loading]="loading"
+    [error]="errorText"
   ></app-city-weather>
+  <app-alert [errorText]="errorText" (closeAlert)="clearError()"></app-alert>
 </div>

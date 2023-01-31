@@ -33,6 +33,10 @@ export class AddedCityComponent implements OnInit, OnDestroy {
 
   showOptions: boolean = false;
 
+  errorText: string;
+
+  errorClearTimer: any;
+
   constructor(private httpRequest: HttpRequestsService) {}
 
   optionToggle(event: Event) {
@@ -51,15 +55,34 @@ export class AddedCityComponent implements OnInit, OnDestroy {
     this.showOptions = false;
     this.requestSubscription = this.httpRequest
       .getCityWeather(this.cityname)
-      .subscribe((data) => {
-        this.cityWeather = { ...data, weather: data.weather[0] };
-        this.loading = false;
-      });
+      .subscribe(
+        (data) => {
+          this.cityWeather = { ...data, weather: data.weather[0] };
+          this.loading = false;
+        },
+        (error) => {
+          if (error.status) {
+            this.errorText = 'the city weather not founded!';
+          } else {
+            this.errorText = 'something went wrong please try again later:(';
+          }
+          this.loading = false;
+          this.errorClearTimer = setTimeout(() => {
+            this.errorText = '';
+          }, 5000);
+        }
+      );
   }
 
   onDelete(event?: Event) {
     event?.stopPropagation();
     this.deleteCity.emit(this.cityIndex);
+  }
+
+  closeAlertHandler() {
+    clearTimeout(this.errorClearTimer);
+    this.errorText = '';
+    this.loading = false;
   }
 
   ngOnInit(): void {
